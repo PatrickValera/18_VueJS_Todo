@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>TIMER</h1>
+    <!-- <h1>TIMER</h1> -->
   </header>
 </template>
 
