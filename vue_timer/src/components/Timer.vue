@@ -1,18 +1,19 @@
+<script setup>
+import TimerInput from './TimerInput.vue'
+</script>
 <script>
 export default {
   data() {
     return {
       timerEnabled: 0,
       time: 0,
-      minutes: 0,
-      secs: 0,
       timer: null,
       passed: 0,
     };
   },
   methods: {
-    handleSubmit(e) {
-      this.time = this.minutes * 60 + this.secs;
+    handleSubmit(totalSecs) {
+      this.time = totalSecs
       this.timerEnabled = true;
       this.countDownTimer();
     },
@@ -53,13 +54,8 @@ export default {
 </script>
 
 <template>
-  <div  v-if="!timerEnabled">
-    <form class="form" v-if="!timerEnabled" @submit.prevent="handleSubmit">
-      <input class='input' v-model="minutes" type="number" placeholder="m" />
-      <input class='input' v-model="secs" type="number" placeholder="s" />
-      <input class='input input-submit' type="submit" value="submit" />
-    </form>
-  </div>
+  <TimerInput v-if="!timerEnabled" @setTimer="handleSubmit"/>
+  
   <div v-else>
     <!-- <span> {{ minutes }}:{{ secs }} </span> -->
     <div class="time-container">
@@ -74,28 +70,30 @@ export default {
 </template>
 
 <style>
-
-.form{
-    padding: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-
+.form {
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
 }
-.input{
-    padding:.5rem;
-    width: 50%;
-    font-size: 1.5rem;
+.input {
+  padding: 0.5rem;
+  width: 50%;
+  font-size: 1.5rem;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
-.input-submit{
-    width: 100%;
+.input-submit {
+  width: 100%;
 }
-.time-container{
-    /* border:1px solid green; */
-    text-align: center;
-    font-size: 2rem;
+.time-container {
+  /* border:1px solid green; */
+  text-align: center;
+  font-size: 2rem;
 }
-.time-minutes::after{
-    content:":"
+.time-minutes::after {
+  content: ":";
 }
 
 .progress-bar-container {
@@ -103,8 +101,7 @@ export default {
   width: 100%;
   border-radius: 1rem;
   overflow: hidden;
-  border:3px solid white;
-
+  border: 3px solid white;
 }
 .progress-bar {
   border-radius: 1rem;
