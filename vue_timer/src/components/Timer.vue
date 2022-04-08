@@ -58,7 +58,7 @@ export default {
   
   <div v-else>
     <!-- <span> {{ minutes }}:{{ secs }} </span> -->
-    <div class="time-container">
+    <div class="time-container" >
       <span class="time-minutes">{{ minutesPrettify }}</span>
       <span class="time-seconds">{{ Math.ceil(time % 60) }}</span>
     </div>
@@ -90,7 +90,7 @@ export default {
 .time-container {
   /* border:1px solid green; */
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 .time-minutes::after {
   content: ":";
@@ -101,12 +101,12 @@ export default {
   width: 100%;
   border-radius: 1rem;
   overflow: hidden;
-  border: 3px solid white;
+  border: 3px solid rgba(200, 200, 200, .7);
 }
 .progress-bar {
   border-radius: 1rem;
   transition: all 500ms linear;
-  height: 2rem;
-  background-color: #555;
+  height: 3rem;
+  background-color: rgba(160, 150, 150, .8);
 }
 </style>
